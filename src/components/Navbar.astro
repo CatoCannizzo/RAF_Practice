@@ -1,0 +1,29 @@
+---
+const items = [
+   {
+      title: 'Home',
+      path: '/'
+   },
+   {
+      title: 'Blog',
+      path: '/blog'
+   },
+   {
+      title: 'About',
+      path: '/about'
+   },
+
+];
+---
+<div>
+   <div>
+      Cannizzo Test
+   </div>
+   <div>
+      <ul> 
+         {items.map(item => (         
+            <li><a href={item.path}>{item.title}</a> </li>
+         )   )}
+      </ul>
+   </div>
+</div>
