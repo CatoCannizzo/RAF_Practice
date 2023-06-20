@@ -1,6 +1,21 @@
 ---
 import Base from "./Base.astro";
+
+const { title, date } = Astro.props.frontmatter
+//In the future come back and grab this off user data
+const formatDate = (date:string): string => {
+   return new Date(date).toLocaleDateString("en-emodeng", 
+   {year: "numeric", 
+   month: 'long', 
+   day:"numeric"})
+}
 ---
 <Base title="Blog Post">
-   <slot></slot>
+   <div>
+      <h1 class="text-5xl font-bold mb-2">{title}</h1>
+      <p class="mb-4"> Written on: {formatDate(date)}</p>
+   </div>
+   <div class="prose">
+      <slot></slot>
+   </div>
 </Base>

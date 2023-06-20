@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: My first blog post
-date: 2023-06-20
+title: My duplicate blog post
+date: 2023-06-22
 ---
 
 # Lorem ipsum dolor sit amet
