@@ -1,8 +1,14 @@
 ---
+import type { MarkdownLayoutProps } from "astro";
 import Base from "./Base.astro";
+import type { BlogPostFrontMatter } from "@types";
 
-const { title, date } = Astro.props.frontmatter
-//In the future come back and grab this off user data
+//imports the explictly typed props for intellisense and error checking
+type Props = MarkdownLayoutProps<BlogPostFrontMatter>;//
+
+const { title, date, author } = Astro.props.frontmatter
+
+//In the future come back and grab local time type off user data
 const formatDate = (date:string): string => {
    return new Date(date).toLocaleDateString("en-emodeng", 
    {year: "numeric", 
@@ -13,6 +19,7 @@ const formatDate = (date:string): string => {
 <Base title="Blog Post">
    <div>
       <h1 class="text-5xl font-bold mb-2">{title}</h1>
+      <p> Written by: {author} </p>
       <p class="mb-4"> Written on: {formatDate(date)}</p>
    </div>
    <div class="prose">
