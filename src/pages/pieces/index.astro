@@ -2,12 +2,13 @@
 import Base from "@layouts/Base.astro";
 const pieces = await Astro.glob('./*.md');
 ---
-<Base title="My Blog Posts">
-   <h1 class="mb-6 text-6xl">My Blog Posts</h1>
+<Base title="My Blog Posts", heading="My Blog Posts">
+
    <div>
       {pieces.map(piece =>(
          <div class="py-4 border-b first:border-t hover:bg-slate-300 rounded">
-            <a class="text-blue-700 hover:underline" href={piece.url}>{piece.frontmatter.title}</a>
+            <a class="text-blue-700 hover:underline ml-2" href={piece.url}>{piece.frontmatter.title}</a>
+            <p class="text-right">{piece.frontmatter.newdate}</p>
          </div>
       ))}
    </div>

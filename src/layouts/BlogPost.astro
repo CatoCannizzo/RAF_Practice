@@ -1,7 +1,7 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
-import Base from "./Base.astro";
 import type { BlogPostFrontMatter } from "@types";
+import Base from "./Base.astro";
 
 //imports the explictly typed props for intellisense and error checking
 type Props = MarkdownLayoutProps<BlogPostFrontMatter>;//
@@ -16,11 +16,10 @@ const formatDate = (date:string): string => {
    day:"numeric"})
 }
 ---
-<Base title="Blog Post">
+<Base title="Blog Post" heading={title}>
    <div>
-      <h1 class="text-5xl font-bold mb-2">{title}</h1>
       <p> Written by: {author} </p>
-      <p class="mb-4"> Written on: {formatDate(date)}</p>
+      <p class="mb-4"> {formatDate(date)}</p>
    </div>
    <div class="prose">
       <slot></slot>

@@ -1,8 +1,10 @@
 ---
 interface Props {
    title: string;
+   heading: string;
 };
 const {title} = Astro.props;
+const {heading} = Astro.props;
 import Navbar from '@components/Navbar.astro'
 ---
 <!DOCTYPE html>
@@ -39,6 +41,7 @@ import Navbar from '@components/Navbar.astro'
       <div class="max-w-5xl mx-auto">
             <Navbar/>
             <div class="max-w-4xl mx-auto mt-16">
+               <h1 class="mb-6 text-6xl">{heading}</h1>
                <slot/>
             </div>
       </div>
