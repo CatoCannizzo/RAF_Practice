@@ -1,29 +1,39 @@
 ---
 const items = [
-   {
-      title: 'Home',
-      path: '/'
-   },
-   {
-      title: 'Blog',
-      path: '/pieces'
-   },
-   {
-      title: 'About',
-      path: '/about'
-   },
-
+	{
+		title: "Home",
+		path: "/",
+	},
+	{
+		title: "Blog",
+		path: "/pieces",
+	},
+	{
+		title: "About",
+		path: "/about",
+	},
 ];
+
+// const pathname = new URL(Astro.request.url).pathname; //grabs the current url to deconstruct path name
+// const currentPath = pathname.slice(1); //removes the first "/"
+// const isCurrentPath = true;
 ---
+
 <div class="flex bg-black text-white items-center">
-   <div class="text-lg font-bold ml-4">
-      Cannizzo Test
-   </div>
-   <div class="ml-auto">
-      <ul class="flex"> 
-         {items.map(item => (         
-            <li><a class="p-4 block hover:bg-gray-700" href={item.path}>{item.title}</a> </li>
-         )   )}
-      </ul>
-   </div>
+	<div class="text-lg font-bold ml-4">Cannizzian Test</div>
+	<div class="ml-auto">
+		<ul class="flex">
+			{
+				items.map((item) => (
+					<li>
+						<a
+							class="p-4 block hover:bg-gray-700 focus:outline-none focus:bg-blue-700 active:bg-green-700"
+							href={item.path}>
+							{item.title}
+						</a>{" "}
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </div>
