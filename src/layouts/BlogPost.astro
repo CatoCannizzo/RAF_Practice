@@ -1,27 +1,36 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
 import type { BlogPostFrontMatter } from "@types";
+import { Picture } from "astro:assets";
 import Base from "./Base.astro";
+import { formatDate } from "../utils.ts";
 
+//!!!Need to come back and make this a dynamic import individual to each page
+import duplicate from "../images/scene.png";
 //imports the explictly typed props for intellisense and error checking
-type Props = MarkdownLayoutProps<BlogPostFrontMatter>;//
-
-const { title, date, author } = Astro.props.frontmatter
-
-//In the future come back and grab local time type off user data
-const formatDate = (date:string): string => {
-   return new Date(date).toLocaleDateString("en-emodeng", 
-   {year: "numeric", 
-   month: 'long', 
-   day:"numeric"})
-}
+type Props = MarkdownLayoutProps<BlogPostFrontMatter>; //I believe this replaces the markdownlayoutprops with are explicitly typed TS props for intellisense
+const { title, date, author, draft } = Astro.props.frontmatter;
 ---
+
 <Base title="Blog Post" heading={title}>
-   <div>
-      <p> Written by: {author} </p>
-      <p class="mb-4"> {formatDate(date)}</p>
-   </div>
-   <div class="prose">
-      <slot></slot>
-   </div>
+	<div>
+		{
+			draft && (
+				<p class="bg-red-700 text-white inline-block px-2 mb-4">DRAFT</p>
+			)
+		}
+		<p>Written by: {author}</p>
+		<p class="mb-4">{formatDate(date)}</p>
+	</div>
+
+	<Picture
+		src={duplicate}
+		alt="A high contrast random picture"
+		widths={[240, 540, 720, duplicate.width]}
+		sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${duplicate.width}px`}
+	/>
+
+	<div class="prose">
+		<slot />
+	</div>
 </Base>

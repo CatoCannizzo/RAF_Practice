@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: My tutorial driven post
 date: 2023-06-19
 author: Cato Cannizzo
+draft: true
 ---
 
 # Lorem ipsum dolor sit amet

@@ -3,6 +3,7 @@ interface BlogPostFrontMatter {
    title: string;
    date: string;
    author: string;
+   draft?: boolean;
 }
 
 export type{

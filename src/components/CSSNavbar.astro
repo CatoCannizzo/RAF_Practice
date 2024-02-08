@@ -1,23 +1,20 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
-const isActive = true;
-const isColorActive = "bg-orange-500";
-const normal = "m-auto font-bold bg-gray-500";
 ---
 
 <div class="flex bg-black text-white items-center">
 	<div class="text-lg font-bold ml-4">Cannizzian Test</div>
-	<div class={isActive ? isColorActive : normal}>
+	<div class="currentp">
 		You are on the {currentPath === "" ? "home" : currentPath} page
 	</div>
 	<div class="ml-auto">
 		<ul>
-			<a class={currentPath === "" ? "active" : ""} href="/">Home</a>
-			<a class={currentPath === "pieces" ? isColorActive : ""} href="/pieces"
+			<a class={currentPath === "" ? "currentp" : ""} href="/">Home</a>
+			<a class={currentPath === "pieces" ? "currentp" : ""} href="/pieces"
 				>Blog</a
 			>
-			<a class={currentPath === "about" ? "active" : ""} href="/about"
+			<a class={currentPath === "about" ? "currentp" : ""} href="/about"
 				>About Me</a
 			>
 		</ul>
@@ -41,7 +38,7 @@ const normal = "m-auto font-bold bg-gray-500";
 	a:active {
 		background-color: green;
 	}
-	.active {
+	.currentp {
 		background-color: orange;
 	}
 </style>
