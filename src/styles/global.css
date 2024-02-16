@@ -1,0 +1,54 @@
+/* !!! Remove this for tailwind after tutorial */
+* {
+   box-sizing: border-box;
+ }
+ body {
+   margin: 0 auto;
+   line-height: 1.5;
+ }
+
+ .nav-links {
+  width: 100%;
+  background-color: orange;
+  display: none;
+  height: 100%;
+}
+.nav-links a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  height: 100%
+}
+.expanded {
+  display: unset;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: orange;
+}
+@media screen and (min-width: 636px) {
+  .nav-links {
+    top: 5rem;
+    margin-left: auto;
+    display: block;
+    position: static;
+    width: auto;
+    background: none;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    scale: 120%;
+  }
+  .hamburger {
+		display: none;
+	}
+}

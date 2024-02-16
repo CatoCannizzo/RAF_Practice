@@ -1,0 +1,14 @@
+---
+import CSSNavbar from "./CSSNavbar.astro";
+import Hamburger from "./Hamburger.astro";
+//This is the top element of the page.
+//The hamburger element has display none on medium+ interfaces with the help of the menu script in the base layout
+//The CSS navbar moves from vertial to horizontal block
+---
+
+<header>
+	<nav class="flex bg-black text-white items-center">
+		<Hamburger />
+		<CSSNavbar />
+	</nav>
+</header>

@@ -1,32 +1,23 @@
 ---
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
+import "../styles/global.css";
 ---
 
-<div class="flex bg-black text-white items-center">
-	<div class="text-lg font-bold ml-4">Cannizzian Test</div>
-	<div class="currentp">
-		You are on the {currentPath === "" ? "home" : currentPath} page
-	</div>
-	<div class="ml-auto">
-		<ul>
-			<a class={currentPath === "" ? "currentp" : ""} href="/">Home</a>
-			<a class={currentPath === "pieces" ? "currentp" : ""} href="/pieces"
-				>Blog</a
-			>
-			<a class={currentPath === "about" ? "currentp" : ""} href="/about"
-				>About Me</a
-			>
-		</ul>
-	</div>
+<!-- !!!Need to bump this back into tail wind sometime -->
+<div class="text-lg font-bold mx-5">Cannizzian Test</div>
+<div class="nav-links">
+	<!-- !!! this is a mess -->
+	<a class={currentPath === "" ? "currentp" : ""} href="/">Home</a>
+	<a class={currentPath === "blog" ? "currentp" : ""} href="/blog">Blog</a>
+	<a class={currentPath === "about" ? "currentp" : ""} href="/about">
+		About Me
+	</a>
 </div>
 
 <style>
-	ul {
-		display: flex;
-	}
-	a {
-		padding: 1rem;
+	/* a {
+		padding: 0.5rem;
 	}
 	a:hover {
 		background-color: gray;
@@ -39,6 +30,5 @@ const currentPath = pathname.slice(1); // remove the first "/"
 		background-color: green;
 	}
 	.currentp {
-		background-color: orange;
-	}
+		background-color: orange;*/
 </style>

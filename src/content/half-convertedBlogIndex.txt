@@ -1,0 +1,35 @@
+---
+// import type { MarkdownInstance } from "astro";
+import Base from "@layouts/Base.astro";
+// import type { BlogPostFrontMatter } from "@types";
+import { getCollection } from "astro:content";
+import { formatDate } from "../../utils.ts";
+
+let posts = (await getCollection("blog")).sort(
+	(a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+// type Post = MarkdownInstance;
+
+if (import.meta.env.PROD) {
+	posts = posts.filter((post) => !post.data.draft);
+}
+---
+
+<Base title="My Blog Posts" , heading="My Blog Posts">
+	<div>
+		{
+			posts.map((post) => (
+				//!!!change the following div to article and see whats up
+				<div class="py-4 border-b first:border-t hover:bg-slate-300 rounded">
+					{post.data.draft && (
+						<p class="bg-red-700 text-white inline-block">DRAFT</p>
+					)}
+					<a class="text-blue-700 hover:underline ml-2" href={post.slug}>
+						{post.data.title}
+					</a>
+					<p class="text-right">{formatDate(post.data.date)}</p>
+				</div>
+			))
+		}
+	</div>
+</Base>

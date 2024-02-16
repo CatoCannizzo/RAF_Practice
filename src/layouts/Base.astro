@@ -5,14 +5,15 @@ interface Props {
 }
 const { title } = Astro.props;
 const { heading } = Astro.props;
-import Navbar from "@components/CSSNavbar.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>{title} / Cannizzian Cast</title>
+		<title>{title}</title>
 		<meta name="viewport" content="wideth=device-width, initial-scale=1" />
 		<style>
 			@font-face {
@@ -39,11 +40,15 @@ import Navbar from "@components/CSSNavbar.astro";
 	</head>
 	<body>
 		<div class="max-w-5xl mx-auto">
-			<Navbar />
-			<div class="max-w-4xl mx-auto mt-16">
+			<Header />
+			<div class="px-4 max-w-4xl mx-auto mt-16">
 				<h1 class="mb-6 text-6xl">{heading}</h1>
 				<slot />
 			</div>
+			<Footer />
 		</div>
+		<script>
+			import "../scripts/menu.js";
+		</script>
 	</body>
 </html>
