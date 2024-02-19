@@ -6,49 +6,73 @@
    margin: 0 auto;
    line-height: 1.5;
  }
+ .line {
+  border: 2px solid white;
+  border-radius: 5px;
+ }
 
  .nav-links {
   width: 100%;
-  background-color: orange;
   display: none;
   height: 100%;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.holder {
+  margin: 0.25rem 0;
+  padding: 0.5rem;
+  background-color: orange;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 .nav-links a {
-  display: block;
-  text-align: center;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
-  height: 100%
+  white-space: nowrap;
+}
+.nav-head {
+  display: none;
 }
 .expanded {
+  display: flex;
+}
+.expanded2 {
   display: unset;
 }
 
-.nav-links a:hover,
-.nav-links a:focus {
-  background-color: orange;
-}
+
 @media screen and (min-width: 636px) {
   .nav-links {
     top: 5rem;
     margin-left: auto;
-    display: block;
-    position: static;
     width: auto;
     background: none;
   }
+  .nav-head {
+    display: unset;
+  }
+  .holder {
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-radius: 3px;
+    border: 0px solid black;
+    background-color: black;
+    transition-duration: 150ms;
 
+  }
   .nav-links a {
     display: inline-block;
-    padding: 15px 20px;
     font-size: 1.2rem;
   }
-  .nav-links a:hover,
-  .nav-links a:focus {
-    scale: 120%;
+  .holder:hover,
+  .holder:focus {
+    scale: 110%;
+    background-color: orange;
   }
   .hamburger {
 		display: none;
 	}
+
 }

@@ -5,30 +5,24 @@ import "../styles/global.css";
 ---
 
 <!-- !!!Need to bump this back into tail wind sometime -->
-<div class="text-lg font-bold mx-5">Cannizzian Test</div>
-<div class="nav-links">
-	<!-- !!! this is a mess -->
-	<a class={currentPath === "" ? "currentp" : ""} href="/">Home</a>
-	<a class={currentPath === "blog" ? "currentp" : ""} href="/blog">Blog</a>
-	<a class={currentPath === "about" ? "currentp" : ""} href="/about">
-		About Me
-	</a>
+<div class="flex justify-evenly w-full">
+	<div class="nav-head expanded2 text-xl font-bold my-auto mr-auto ml-1">
+		Cannizzian Test
+	</div>
+	<div class="nav-links">
+		<!-- !!! this is a mess -->
+		<div class="holder">
+			<a class={currentPath === "" ? "currentp" : ""} href="/">Home</a>
+		</div>
+		<div class="holder">
+			<a class={currentPath === "blog" ? "currentp" : ""} href="/blog"
+				>Blog</a
+			>
+		</div>
+		<div class="holder">
+			<a class={currentPath === "about" ? "currentp" : ""} href="/about">
+				About Me
+			</a>
+		</div>
+	</div>
 </div>
-
-<style>
-	/* a {
-		padding: 0.5rem;
-	}
-	a:hover {
-		background-color: gray;
-	}
-	a:focus {
-		outline: 0px;
-		background-color: blue;
-	}
-	a:active {
-		background-color: green;
-	}
-	.currentp {
-		background-color: orange;*/
-</style>

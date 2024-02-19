@@ -1,3 +1,4 @@
+//Delete or figure out how to use
 //explictly defines blogpost props for typescript
 interface BlogPostFrontMatter {
    title: string;

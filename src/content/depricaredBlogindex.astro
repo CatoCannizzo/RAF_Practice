@@ -1,10 +1,14 @@
 ---
+// delete or figure out how to do typescript
+import type { MarkdownInstance } from "astro";
 import Base from "@layouts/Base.astro";
+import type { BlogPostFrontMatter } from "@types";
 import { formatDate } from "../../utils.ts";
 
-let posts = await Astro.glob("./*.md");
+let posts = await Astro.glob<BlogPostFrontMatter>("./*.md");
+type Post = MarkdownInstance<BlogPostFrontMatter>;
 
-posts = posts.sort((a, b) => {
+posts = posts.sort((a: Post, b: Post): number => {
 	if (a.frontmatter.pubDate > b.frontmatter.pubDate) {
 		return -1;
 	}

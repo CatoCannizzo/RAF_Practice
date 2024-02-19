@@ -1,0 +1,24 @@
+---
+// !!! delete if not used
+import type { MarkdownLayoutProps } from "astro";
+import type { BlogPostFrontMatter } from "@types";
+import Base from "../layouts/Base.astro.tsx";
+import { formatDate } from "../utils.ts";
+
+//imports the explictly typed props for intellisense and error checking
+type Props = MarkdownLayoutProps<BlogPostFrontMatter>; //I believe this replaces the markdownlayoutprops with are explicitly typed TS props for intellisense
+const { title, date, author, draft } = Astro.props.frontmatter;
+---
+
+<Base title="Blog Post" heading={title}>
+	<div class="prose">
+		{
+			draft && (
+				<p class="bg-red-700 text-white inline-block px-2 mb-4">DRAFT</p>
+			)
+		}
+		<p>Written by: {author}</p>
+		<p class="mb-4">{formatDate(date)}</p>
+		<slot />
+	</div>
+</Base>
