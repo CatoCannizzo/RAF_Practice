@@ -1,0 +1,20 @@
+---
+const { url, draft, title, pubDate } = Astro.props;
+import { formatDate } from "../utils.ts";
+---
+
+<li>
+	<div class="py-4 border-b first:border-t hover:bg-slate-300 rounded">
+		{
+			draft && (
+				<p class="bg-red-700 text-white inline-block rounded px-0.5">
+					DRAFT
+				</p>
+			)
+		}
+		<a class="text-blue-700 hover:underline ml-2" href={url}>
+			{title}
+		</a>
+		<p class="text-right">{formatDate(pubDate)}</p>
+	</div>
+</li>

@@ -1,7 +1,6 @@
 ---
 import Base from "@layouts/Base.astro";
-import { formatDate } from "../../utils.ts";
-
+import BlogPostLayout from "@components/BlogPostLayout.astro";
 let posts = await Astro.glob("./*.md");
 
 posts = posts.sort((a, b) => {
@@ -21,18 +20,17 @@ if (import.meta.env.PROD) {
 
 <Base title="My Blog Posts" , heading="My Blog Posts">
 	<div>
-		{
-			posts.map((post) => (
-				<div class="py-4 border-b first:border-t hover:bg-slate-300 rounded">
-					{post.frontmatter.draft && (
-						<p class="bg-red-700 text-white inline-block">DRAFT</p>
-					)}
-					<a class="text-blue-700 hover:underline ml-2" href={post.url}>
-						{post.frontmatter.title}
-					</a>
-					<p class="text-right">{formatDate(post.frontmatter.pubDate)}</p>
-				</div>
-			))
-		}
+		<ul>
+			{
+				posts.map((post) => (
+					<BlogPostLayout
+						url={post.url}
+						draft={post.frontmatter.draft}
+						title={post.frontmatter.title}
+						pubDate={post.frontmatter.pubDate}
+					/>
+				))
+			}
+		</ul>
 	</div>
 </Base>
