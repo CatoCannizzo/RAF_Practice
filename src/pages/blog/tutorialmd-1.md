@@ -2,8 +2,6 @@
 layout: "../../layouts/BlogPost.astro"
 title: "My First Blog Post"
 pubDate: 2024-02-15
-# dont know if we want description tag !!!
-description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 image:
    url: "https://docs.astro.build/assets/full-logo-dark.png"

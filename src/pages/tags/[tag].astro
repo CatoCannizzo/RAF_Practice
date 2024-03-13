@@ -1,0 +1,51 @@
+---
+// The brackets around this page means its not a page itself but instead makes other pages as described below
+import BaseLayout from "../../layouts/Base.astro";
+import Formatter from "../../components/BlogListFormatter.astro";
+
+// If you need information to construct the page routes, write it inside getStaticPaths().
+export async function getStaticPaths(): Promise<Object> {
+	const allPosts = await Astro.glob("../blog/*.md");
+	const uniqueTags = [
+		...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+	];
+
+	// A getStaticPaths function should always return a list of objects containing
+	//params (what to call each page route) and optionally any props (data that you
+	//want to pass to those pages). https://docs.astro.build/en/tutorial/5-astro-api/2/
+	return uniqueTags.map((tag) => {
+		const filteredPosts = allPosts.filter((post) =>
+			post.frontmatter.tags.includes(tag)
+		);
+		//the params tag here is the name of each dynamic route
+		//the props variable is the data to pass to each page
+		return {
+			params: { tag },
+			props: { posts: filteredPosts },
+		};
+	});
+}
+
+// Makes the props available in the below component template outside of the above function
+const { tag } = Astro.params;
+// Here the posts passed to props is a superset of the posts pass to each page in the above function
+const { posts } = Astro.props;
+
+// The following is the layout of what will apear on the dynamicly made static paths
+---
+
+<BaseLayout title=`My ${tag} Blog Posts` , heading=`Only ${tag}`>
+	<h2>Posts tagged with [{tag}]</h2>
+	<ul>
+		{
+			posts.map((post) => (
+				<Formatter
+					url={post.url}
+					draft={post.frontmatter.draft}
+					title={post.frontmatter.title}
+					pubDate={post.frontmatter.pubDate}
+				/>
+			))
+		}
+	</ul>
+</BaseLayout>

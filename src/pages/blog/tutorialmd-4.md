@@ -1,9 +1,10 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: My tutorial driven post
+title: "My tutorial driven post"
 pubDate: 2023-06-19
 author: Cato Cannizzo
 draft: true
+tags: ["blogging", "test", "learning in public", "setbacks"]
 ---
 
 # Lorem ipsum dolor sit amet

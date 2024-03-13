@@ -1,6 +1,8 @@
 ---
+//This index page creates a route in the website that has the same route as the parent folder, allowing us to keep all related pages together
+
 import Base from "@layouts/Base.astro";
-import BlogPostLayout from "@components/BlogPostLayout.astro";
+import BlogPostLayout from "@components/BlogListFormatter.astro";
 let posts = await Astro.glob("./*.md");
 
 posts = posts.sort((a, b) => {

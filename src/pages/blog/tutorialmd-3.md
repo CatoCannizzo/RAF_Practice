@@ -1,8 +1,9 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: My duplicate blog post
+title: "My duplicate blog post"
 pubDate: 2023-06-22
 author: Cato Cannizzo
+tags: ["blogging"]
 ---
 
 # Lorem ipsum dolor sit amet
