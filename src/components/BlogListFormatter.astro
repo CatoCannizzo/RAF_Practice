@@ -1,5 +1,5 @@
 ---
-const { url, draft, title, pubDate } = Astro.props;
+const { url, draft, title, pubDate, tags } = Astro.props;
 import { formatDate } from "../utils.ts";
 ---
 
@@ -16,7 +16,16 @@ import { formatDate } from "../utils.ts";
 			<p class="text-blue-700 hover:underline ml-2">
 				{title}
 			</p>
-			{pubDate && <p class="text-right">{formatDate(pubDate)}</p>}
+			<div class="flex">
+				<div class="flex m-1 mr-auto">
+					{tags && tags.map((tag)=>(
+						<div class="bg-teal-500 px-0.5 mx-1 rounded">
+							<a class="text-white text-sm" href=`tags/${tag}`>{tag}</a>
+						</div>
+					))}
+				 </div>
+				{pubDate && <p class="text-right">{formatDate(pubDate)}</p>}
+			</div>
 		</div>
 	</a>
 </li>
