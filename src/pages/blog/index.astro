@@ -3,7 +3,6 @@
 
 import Base from "@layouts/Base.astro";
 import BlogPostLayout from "@components/BlogListFormatter.astro";
-// import TagLister from "@components/TagLister.astro";
 let posts = await Astro.glob("./*.md");
 
 posts = posts.sort((a, b) => {
@@ -23,7 +22,6 @@ if (import.meta.env.PROD) {
 
 <Base title="My Blog Posts" , heading="My Blog Posts">
 	<div>
-		<!-- <TagLister /> -->
 		<ul>
 			{
 				posts.map((post) => (

@@ -13,7 +13,7 @@ const skills = ["SQL", "React", "Astro", "Python", "UI Design", "UX Research"];
 const randomizeHobbies = identity.hobbies.sort(() => 0.5 - Math.random());
 
 const happy = true;
-const finished = false;
+const finished = true;
 const goal = 3;
 
 const skillColor = "green";
@@ -22,18 +22,17 @@ const textCase = "uppercase";
 ---
 
 <Base title={pageTitle} , heading="About Cato Cannizzo">
-	<div class="prose">
+	<!-- !!!the following prose tag is why this page doesn't update to night mode -->
+	<article class="prose dark:prose-invert">
 		<p>
 			I am working through Astro's introductory tutorial. This is the second
 			page on my website, and it's the first one I built myself!
 		</p>
-		<br />
 
 		<p>
 			This site will update as I complete more of the tutorial, so keep
 			checking back and see how my journey is going!
 		</p>
-		<br />
 		<h2>Get to know me!</h2>
 		<ul>
 			<li>My name is {identity.firstName}</li>
@@ -58,7 +57,7 @@ const textCase = "uppercase";
 		<br />
 		{happy && <p>I am happy to be learning Astro!</p>}
 
-		{finished && <p>I finished this tutorial!</p>}
+		{finished && <p>I finished the Astro Blog tutorial!</p>}
 
 		{
 			goal === 3 ? (
@@ -67,7 +66,7 @@ const textCase = "uppercase";
 				<p>My goal is not 3 days.</p>
 			)
 		}
-	</div>
+	</article>
 </Base>
 
 <!--  !!!remove this when you get familiar enough with tail wind to do CSS variables -->

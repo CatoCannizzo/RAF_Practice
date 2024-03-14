@@ -1,4 +1,13 @@
 /* !!! Remove this for tailwind after tutorial */
+html.dark {
+  background-color: black;
+  color: #fff;
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
 * {
    box-sizing: border-box;
  }
