@@ -1,9 +1,9 @@
 ---
 //This index page creates a route in the website that has the same route as the parent folder, allowing us to keep all related pages together
-
-import Base from "@layouts/Base.astro";
-import BlogPostLayout from "@components/BlogListFormatter.astro";
-let posts = await Astro.glob("./*.md");
+import { getCollection } from "astro:content";
+import Base from "@layouts/BaseLO.astro";
+import BlogList from "@components/BlogListFormatter.astro";
+let posts = await getCollection("posts");
 
 posts = posts.sort((a, b) => {
 	if (a.frontmatter.pubDate > b.frontmatter.pubDate) {
@@ -25,7 +25,7 @@ if (import.meta.env.PROD) {
 		<ul>
 			{
 				posts.map((post) => (
-					<BlogPostLayout
+					<BlogList
 						url={post.url}
 						draft={post.frontmatter.draft}
 						title={post.frontmatter.title}

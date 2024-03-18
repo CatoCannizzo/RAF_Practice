@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLO.astro";
+
+//2nd time using getstaticpaths, need to return a params (page url) & props (page props)
+//in this case the slug is going to the name of the file and the props are the props defined in config.ts for postsCollection
+export async function getStaticPaths() {
+	const blogEntries = await getCollection("blog");
+	return blogEntries.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+// Makes the props available in the below component template outside of the above function
+const { entry } = Astro.props;
+//I have no idea what this is
+const { Content } = await entry.render();
+---
+
+<BlogPostLayout frontmatter={entry.data}>
+	<Content />
+</BlogPostLayout>

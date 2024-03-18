@@ -1,7 +1,7 @@
 ---
 //  This index page creates a route in the website that has the same route as the parent folder, allowing us to keep all related pages together
 //The other way of doing this would be to create a /pages/tags.astro page
-import Base from "../../layouts/Base.astro";
+import Base from "../../layouts/BaseLO.astro";
 import Formatter from "../../components/BlogListFormatter.astro";
 const pageTitle: string = "Tag Index";
 const allPosts = await Astro.glob("../blog/*.md");

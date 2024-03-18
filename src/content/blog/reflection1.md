@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "Creating Blog Tags"
 pubDate: 2024-03-05
 author: "Cato Cannizzo"

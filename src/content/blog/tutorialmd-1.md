@@ -1,5 +1,4 @@
 ---
-layout: "../../layouts/BlogPost.astro"
 title: "My First Blog Post"
 pubDate: 2024-02-15
 author: "Astro Learner"

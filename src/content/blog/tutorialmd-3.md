@@ -1,10 +1,8 @@
 ---
-layout: "../../layouts/BlogPost.astro"
-title: "My tutorial driven post"
-pubDate: 2023-06-19
+title: "My duplicate blog post"
+pubDate: 2023-06-22
 author: Cato Cannizzo
-draft: true
-tags: ["blogging", "test", "learning in public", "setbacks"]
+tags: ["blogging"]
 ---
 
 # Lorem ipsum dolor sit amet
