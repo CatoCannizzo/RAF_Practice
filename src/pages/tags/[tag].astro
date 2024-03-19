@@ -1,13 +1,17 @@
 ---
-// The brackets around this page means its not a page itself but instead makes other pages as described below
+//This page makes individual pages dynamically from all the tags used in the blog posts
+//The brackets around this file name means its not a page itself but instead makes other pages as described below
 import BaseLayout from "../../layouts/BaseLO.astro";
 import Formatter from "../../components/BlogListFormatter.astro";
 
+//allows astro to grab the files in collection
+import { getCollection } from "astro:content";
+
 // If you need information to construct the page routes, write it inside getStaticPaths().
 export async function getStaticPaths(): Promise<Object> {
-	const allPosts = await Astro.glob("../blog/*.md");
-	const uniqueTags = [
-		...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
+	const allPosts = await getCollection("blog");
+	const uniqueTags: string[] = [
+		...new Set(allPosts.map((post) => post.data.tags).flat()),
 	];
 
 	// A getStaticPaths function should always return a list of objects containing
@@ -15,7 +19,7 @@ export async function getStaticPaths(): Promise<Object> {
 	//want to pass to those pages). https://docs.astro.build/en/tutorial/5-astro-api/2/
 	return uniqueTags.map((tag) => {
 		const filteredPosts = allPosts.filter((post) =>
-			post.frontmatter.tags.includes(tag)
+			post.data.tags.includes(tag)
 		);
 		//the params tag here is the name of each dynamic route
 		//the props variable is the data to pass to each page
@@ -35,16 +39,16 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout title=`My ${tag} Blog Posts` , heading=`Only ${tag}`>
-	<h2>Posts tagged with [{tag}]</h2>
+	<p class="text-lg font-medium">Posts tagged with {tag}</p>
 	<ul>
 		{
 			posts.map((post) => (
 				<Formatter
-					url={post.url}
-					draft={post.frontmatter.draft}
-					title={post.frontmatter.title}
-					pubDate={post.frontmatter.pubDate}
-					tags={post.frontmatter.tags}
+					url={`/blog/${post.slug}/`}
+					draft={post.data.draft}
+					title={post.data.title}
+					pubDate={post.data.pubDate}
+					tags={post.data.tags}
 				/>
 			))
 		}

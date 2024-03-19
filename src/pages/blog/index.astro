@@ -3,20 +3,20 @@
 import { getCollection } from "astro:content";
 import Base from "@layouts/BaseLO.astro";
 import BlogList from "@components/BlogListFormatter.astro";
-let posts = await getCollection("posts");
+let posts = await getCollection("blog");
 
 posts = posts.sort((a, b) => {
-	if (a.frontmatter.pubDate > b.frontmatter.pubDate) {
+	if (a.data.pubDate > b.data.pubDate) {
 		return -1;
 	}
-	if (b.frontmatter.pubDate > a.frontmatter.pubDate) {
+	if (b.data.pubDate > a.data.pubDate) {
 		return 1;
 	}
 	return 0;
 });
 
 if (import.meta.env.PROD) {
-	posts = posts.filter((post) => !post.frontmatter.draft);
+	posts = posts.filter((post) => !post.data.draft);
 }
 ---
 
@@ -26,11 +26,11 @@ if (import.meta.env.PROD) {
 			{
 				posts.map((post) => (
 					<BlogList
-						url={post.url}
-						draft={post.frontmatter.draft}
-						title={post.frontmatter.title}
-						pubDate={post.frontmatter.pubDate}
-						tags={post.frontmatter.tags}
+						url={`/blog/${post.slug}`}
+						draft={post.data.draft}
+						title={post.data.title}
+						pubDate={post.data.pubDate}
+						tags={post.data.tags}
 					/>
 				))
 			}

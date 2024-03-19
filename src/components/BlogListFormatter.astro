@@ -18,9 +18,9 @@ import { formatDate } from "../utils.ts";
 			</p>
 			<div class="flex">
 				<div class="flex m-1 mr-auto">
-					{tags && tags.map((tag)=>(
+					{tags && tags.map((tag: string)=>(
 						<div class="bg-teal-500 px-0.5 mx-1 rounded">
-							<a class="text-white text-sm" href=`tags/${tag}`>{tag}</a>
+							<a class="text-white text-sm" href=`/tags/${tag}`>{tag}</a>
 						</div>
 					))}
 				 </div>

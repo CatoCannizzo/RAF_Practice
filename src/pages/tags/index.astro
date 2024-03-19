@@ -3,19 +3,16 @@
 //The other way of doing this would be to create a /pages/tags.astro page
 import Base from "../../layouts/BaseLO.astro";
 import Formatter from "../../components/BlogListFormatter.astro";
+//allows astro to grab the files in collection
+import { getCollection } from "astro:content";
+
 const pageTitle: string = "Tag Index";
-const allPosts = await Astro.glob("../blog/*.md");
-const uniqueTags = [
-	...new Set(allPosts.map((post) => post.frontmatter.tags).flat()),
-];
+const allPosts = await getCollection("blog");
+const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
 <Base title={pageTitle} , heading={pageTitle}>
 	<ul>
-		{
-			uniqueTags.map((tag) => (
-				<Formatter url={`tags/${tag}`} title={tag} draft={false} />
-			))
-		}
+		{uniqueTags.map((tag) => <Formatter url={tag} tags={[tag]} />)}
 	</ul>
 </Base>

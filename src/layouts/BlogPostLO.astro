@@ -7,16 +7,16 @@ const { frontmatter } = Astro.props;
 ---
 
 <Base title="Blog Post" heading={frontmatter.title}>
-	<div class="prose">
+	<div class="prose dark:prose-invert">
 		{
 			frontmatter.draft && (
 				<p class="bg-red-700 text-white inline-block px-2 mb-4">DRAFT</p>
 			)
 		}
 		<div class="flex m-1 mr-auto">
-			{frontmatter.tags && frontmatter.tags.map((tag)=>(
+			{frontmatter.tags && frontmatter.tags.map((tag: string)=>(
 				<div class="bg-teal-500 px-0.5 mx-1 rounded">
-					<a class="text-white text-sm" href=`tags/${tag}`>{tag}</a>
+					<a class="text-white text-sm" href=`/tags/${tag}`>{tag}</a>
 				</div>
 			))}
 		</div>
