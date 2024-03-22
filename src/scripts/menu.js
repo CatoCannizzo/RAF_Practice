@@ -1,5 +1,6 @@
 // This script controls the hamburger menu for narrow screens
-document.querySelector(".hamburger").addEventListener("click", () => {
-	document.querySelector(".nav-links").classList.toggle("expanded");
-	document.querySelector(".nav-head").classList.toggle("expanded2");
+document.getElementById("hamburger").addEventListener("click", () => {
+	document.getElementById("nav-head").classList.toggle("flex");
+	document.getElementById("nav-head").classList.toggle("hidden");
+	document.getElementById("web-title").classList.toggle("hidden");
 });

@@ -1,0 +1,46 @@
+---
+const items = [
+	{
+		title: "Home",
+		path: "/",
+	},
+	{
+		title: "Blog",
+		path: "/blog",
+	},
+	{
+		title: "About Me",
+		path: "/about",
+	},
+	{
+		title: "Tags",
+		path: "/tags",
+	},
+];
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname;
+---
+
+<div
+	id="nav-head"
+	class="ml-auto sm:justify-evenly w-auto hidden sm:flex sm:flex-row"
+>
+	{
+		items.map((item) => (
+			// leaving this is in to remind myseld to use a comma to consolelog
+			// in the middle of a map
+			//console.log(item.path),
+			<div
+				id="nav-links"
+				class={`w-auto rounded p-2 mx-1 sm:mx-2 hover:bg-orange-500 hover:scale-110 focus:bg-orange-500 focus:scale-110 ${
+					currentPath == item.path ? "bg-sky-500" : ""
+				} `}>
+				<a
+					class="whitespace-nowrap sm:text-xl font-bold dark:text-black"
+					href={item.path}>
+					{item.title}
+				</a>
+			</div>
+		))
+	}
+</div>
