@@ -23,7 +23,7 @@ const currentPath = pathname;
 
 <div
 	id="nav-head"
-	class="ml-auto sm:justify-evenly w-auto hidden sm:flex sm:flex-row"
+	class="hidden w-auto ml-auto sm:justify-evenly sm:flex sm:flex-row"
 >
 	{
 		items.map((item) => (
@@ -36,7 +36,7 @@ const currentPath = pathname;
 					currentPath == item.path ? "bg-sky-500" : ""
 				} `}>
 				<a
-					class="whitespace-nowrap sm:text-xl font-bold dark:text-black"
+					class="font-bold whitespace-nowrap sm:text-xl dark:text-black"
 					href={item.path}>
 					{item.title}
 				</a>
