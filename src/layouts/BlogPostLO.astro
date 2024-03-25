@@ -7,31 +7,36 @@ const { frontmatter } = Astro.props;
 ---
 
 <Base title="Blog Post" heading={frontmatter.title}>
-	<div class="prose dark:prose-invert">
-		{
-			frontmatter.draft && (
-				<p class="bg-red-700 text-white inline-block px-2 mb-4">DRAFT</p>
-			)
-		}
-		<div class="flex m-1 mr-auto">
-			{frontmatter.tags && frontmatter.tags.map((tag: string)=>(
-				<div class="bg-teal-500 px-0.5 mx-1 rounded">
-					<a class="text-white text-sm" href=`/tags/${tag}`>{tag}</a>
-				</div>
-			))}
-		</div>
-		{
-			frontmatter.image && (
-				<img
-					src={frontmatter.image.url}
-					width="300"
-					alt={frontmatter.image.alt}
-				/>
-			)
-		}
-		<p>Written by: {frontmatter.author}</p>
-		<p class="mb-4">{formatDate(frontmatter.pubDate)}</p>
+  <div class="prose dark:prose-invert">
+    {
+      frontmatter.draft && (
+        <p class="mb-4 inline-block bg-red-700 px-2 text-white">DRAFT</p>
+      )
+    }
+    <div class="m-1 mr-auto flex">
+      {
+        frontmatter.tags &&
+          frontmatter.tags.map((tag: string) => (
+            <div class="mx-1 rounded bg-teal-500 px-0.5">
+              <a class="text-sm text-white" href={`/tags/${tag}`}>
+                {tag}
+              </a>
+            </div>
+          ))
+      }
+    </div>
+    {
+      frontmatter.image && (
+        <img
+          src={frontmatter.image.url}
+          width="300"
+          alt={frontmatter.image.alt}
+        />
+      )
+    }
+    <p>Written by: {frontmatter.author}</p>
+    <p class="mb-4">{formatDate(frontmatter.pubDate)}</p>
 
-		<slot />
-	</div>
+    <slot />
+  </div>
 </Base>

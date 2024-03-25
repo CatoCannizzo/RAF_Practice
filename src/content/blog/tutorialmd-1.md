@@ -3,8 +3,8 @@ title: "My First Blog Post"
 pubDate: 2024-02-15
 author: "Astro Learner"
 image:
-   url: "https://docs.astro.build/assets/full-logo-dark.png"
-   alt: "The full Astro logo."
+  url: "https://docs.astro.build/assets/full-logo-dark.png"
+  alt: "The full Astro logo."
 tags: ["astro", "blogging", "learning in public"]
 ---
 

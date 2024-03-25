@@ -3,10 +3,10 @@ import Base from "@layouts/BaseLO.astro";
 const pageTitle = "About Me";
 
 const identity = {
-	firstName: "Cato",
-	country: "USA",
-	occupation: "Web Designer",
-	hobbies: ["Rock Climbing", "Sail Boarding", "Board Games"],
+  firstName: "Cato",
+  country: "USA",
+  occupation: "Web Designer",
+  hobbies: ["Rock Climbing", "Sail Boarding", "Board Games"],
 };
 const skills = ["SQL", "React", "Astro", "Python", "UI Design", "UX Research"];
 const randomizeHobbies = identity.hobbies.sort(() => 0.5 - Math.random());
@@ -17,52 +17,50 @@ const goal = 3;
 ---
 
 <Base title={pageTitle} , heading="About Cato Cannizzo">
-	<article class="prose dark:prose-invert">
-		<p>
-			I am working through Astro's introductory tutorial. This is the second
-			page on my website, and it's the first one I built myself!
-		</p>
+  <article class="prose dark:prose-invert">
+    <p>
+      I am working through Astro's introductory tutorial. This is the second
+      page on my website, and it's the first one I built myself!
+    </p>
 
-		<p>
-			This site will update as I complete more of the tutorial, so keep
-			checking back and see how my journey is going!
-		</p>
-		<h2>Get to know me!</h2>
-		<ul>
-			<li>My name is {identity.firstName}</li>
-			<li>
-				I live in {identity.country} and hope to work as a {
-					identity.occupation
-				}
-			</li>
-			{
-				identity.hobbies.length >= 2 && (
-					<li>
-						Two of my hobbies are: {randomizeHobbies[0]} and
-						{randomizeHobbies[1]}
-					</li>
-				)
-			}
-		</ul>
-		<p>My skills are:</p>
-		<ul>
-			{
-				skills.map((skill) => (
-					<li class="text-green-500 font-bold uppercase">{skill}</li>
-				))
-			}
-		</ul>
-		<br />
-		{happy && <p>I am happy to be learning Astro!</p>}
+    <p>
+      This site will update as I complete more of the tutorial, so keep checking
+      back and see how my journey is going!
+    </p>
+    <h2>Get to know me!</h2>
+    <ul>
+      <li>My name is {identity.firstName}</li>
+      <li>
+        I live in {identity.country} and hope to work as a {identity.occupation}
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {randomizeHobbies[0]} and
+            {randomizeHobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {
+        skills.map((skill) => (
+          <li class="font-bold uppercase text-green-500">{skill}</li>
+        ))
+      }
+    </ul>
+    <br />
+    {happy && <p>I am happy to be learning Astro!</p>}
 
-		{finished && <p>I finished the Astro Blog tutorial!</p>}
+    {finished && <p>I finished the Astro Blog tutorial!</p>}
 
-		{
-			goal === 3 ? (
-				<p>My goal is to finish in 3 days.</p>
-			) : (
-				<p>My goal is not 3 days.</p>
-			)
-		}
-	</article>
+    {
+      goal === 3 ? (
+        <p>My goal is to finish in 3 days.</p>
+      ) : (
+        <p>My goal is not 3 days.</p>
+      )
+    }
+  </article>
 </Base>
