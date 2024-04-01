@@ -40,12 +40,10 @@
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const theme = ((): string => {
-			if (
-				typeof localStorage !== "undefined" &&
-				localStorage.getItem("theme")
-			) {
-				if (typeof localStorage !== null) {
-					return localStorage.getItem("theme");
+			if (typeof localStorage !== "undefined") {
+				let themeFetch = localStorage.getItem("theme");
+				if (themeFetch !== null) {
+					return themeFetch;
 				}
 			}
 			if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -69,12 +67,9 @@
 			const isDark = element.classList.contains("dark");
 			localStorage.setItem("theme", isDark ? "dark" : "light");
 		};
-		if (document.getElementById("themeToggle") === null) {
-			return;
-		} else {
-			document
-				.getElementById("themeToggle")
-				.addEventListener("click", handleToggleClick);
+		const themeToggle = document.getElementById("themeToggle");
+		if (themeToggle !== null) {
+			themeToggle.addEventListener("click", handleToggleClick);
 		}
 	});
 </script>

@@ -13,10 +13,12 @@ const postsCollection = defineCollection({
     description: z.string().optional(),
     draft: z.boolean().default(false),
     author: z.string(),
-    image: z.object({
-      url: z.string(),
-      alt: z.string(),
-    }).optional(),
+    image: z
+      .object({
+        url: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
     tags: z.array(z.string()),
   }),
 });

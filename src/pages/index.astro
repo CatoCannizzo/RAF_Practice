@@ -4,11 +4,11 @@ import Greeting from "../components/Greeting";
 ---
 
 <Base title="Welcome" , heading="Welcome to my Blog!">
-  <!-- make sure to hydrate all dynamic components -->
-  <Greeting client:load messages={["Hi", "Hello", "Howdy", "Hey there"]} />
-  <br />
-  <p>
-    This is a test website styled like a blog for Cato Cannizzo to learn Astro,
-    React, Tailwind, and Typescript.
-  </p>
+	<!-- make sure to hydrate all dynamic components -->
+	<Greeting client:load messages={["Hi!", "Hello!", "Howdy!", "Hey there!"]} />
+	<br />
+	<p>
+		This is a test website styled like a blog for Cato Cannizzo to learn Astro,
+		React, Tailwind, and Typescript.
+	</p>
 </Base>

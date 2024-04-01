@@ -1,8 +1,14 @@
 ---
-const { platform, username } = Astro.props;
+interface Props {
+	platform: string;
+	username: string;
+}
+
+//The : Props below isn't necessary and I am not sure why.
+const { platform, username }: Props = Astro.props;
 ---
 
 <a
-  class="rounded bg-amber-500 px-1 py-0.5 text-white"
-  href={`https://www.${platform}.com/${username}`}>{platform}</a
+	class="rounded bg-amber-500 px-1 py-0.5 text-white"
+	href={`https://www.${platform}.com/${username}`}>{platform}</a
 >
