@@ -12,7 +12,7 @@ const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
 <Base title={pageTitle} , heading={pageTitle}>
-  <ul>
-    {uniqueTags.map((tag) => <Formatter url={tag} tags={[tag]} />)}
-  </ul>
+	<ul>
+		{uniqueTags.map((tag) => <Formatter url={tag} tags={[tag]} />)}
+	</ul>
 </Base>
