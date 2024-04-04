@@ -1,54 +1,51 @@
 ---
 type NavItems = {
-  item: {
-    title: string
-    path: string
-  }[]
-}
+	item: {
+		title: string;
+		path: string;
+	}[];
+};
 const NavItems = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "Blog",
-    path: "/blog",
-  },
-  {
-    title: "About Me",
-    path: "/about",
-  },
-  {
-    title: "Tags",
-    path: "/tags",
-  },
+	{
+		title: "Home",
+		path: "/",
+	},
+	{
+		title: "Blog",
+		path: "/blog",
+	},
+	{
+		title: "About Me",
+		path: "/about",
+	},
+	{
+		title: "Tags",
+		path: "/tags",
+	},
 ];
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname;
+const currentPath = new URL(Astro.request.url).pathname;
 ---
 
 <div
-  id="nav-head"
-  class="ml-auto hidden w-auto sm:flex sm:flex-row sm:justify-evenly"
+	id="nav-head"
+	class="ml-auto hidden w-auto sm:flex sm:flex-row sm:justify-evenly"
 >
-  {
-    NavItems.map((item) => (
-      // leaving this is in to remind myseld to use a comma to consolelog
-      // in the middle of a map
-      //console.log(item.path),
-      <div
-        id="nav-links"
-        class={` mx-1 w-auto rounded p-2 hover:scale-110 hover:bg-orange-500 focus:scale-110 focus:bg-orange-500 sm:mx-2 ${
-          currentPath == item.path ? "bg-sky-500" : ""
-        } `}
-      >
-        <a
-          class="whitespace-nowrap font-bold sm:text-xl dark:text-black"
-          href={item.path}
-        >
-          {item.title}
-        </a>
-      </div>
-    ))
-  }
+	{
+		NavItems.map((item) => (
+			// leaving this is in to remind myseld to use a comma to consolelog
+			// in the middle of a map
+			//console.log(item.path),
+			<div
+				id="nav-links"
+				class={` mx-1 w-auto rounded p-2 hover:scale-110 hover:bg-orange-500 focus:scale-110 focus:bg-orange-500 sm:mx-2 ${
+					currentPath == item.path ? "bg-sky-500" : ""
+				} `}>
+				<a
+					class="whitespace-nowrap font-bold dark:text-black sm:text-xl"
+					href={item.path}>
+					{item.title}
+				</a>
+			</div>
+		))
+	}
 </div>
